@@ -6,14 +6,14 @@
 #include "../../../lib/BluetoothSerial/src/BluetoothSerial.h"
 
 extern HardwareSerial Serial;
-extern BluetoothSerial SerialBT;
+BluetoothSerial SerialBT;
 
 void Communication::setBT() {
     SerialBT.begin("ColorSensor");
-    return;
 }
 
-void Communication::writeBT(std::initializer_list color) {
+void Communication::writeBT(initializer_list<unsigned short> list) {
+    auto color = list;
     auto r = (String) color.begin()[0];
     auto g = (String) color.begin()[1];
     auto b = (String) color.begin()[2];
