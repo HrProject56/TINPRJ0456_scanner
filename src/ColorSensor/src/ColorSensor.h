@@ -11,7 +11,7 @@ using std::initializer_list;
 class ColorSensor {
     public:
         void setColorSensor();
-        initializer_list<unsigned short> getColor();
+        static int * getColor();
 };
 
 

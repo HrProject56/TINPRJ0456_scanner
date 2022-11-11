@@ -26,7 +26,7 @@ void setup() {
  * Refresh data
  */
 void loop() {
-    auto color = cs.getColor();
+    int * color = cs.getColor();
     com.writeBT(color);
     delay(1000);
 }

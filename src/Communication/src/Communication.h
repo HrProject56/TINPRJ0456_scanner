@@ -11,7 +11,7 @@ using std::initializer_list;
 class Communication {
     public:
         void setBT();
-        void writeBT(initializer_list<unsigned short> list);
+        void writeBT(int * list);
 };
 
 
