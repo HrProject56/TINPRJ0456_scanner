@@ -39,9 +39,11 @@ If you need to update one of the libraries refer to `3`.
 - Install CLion
 - Install PlatformIO (Check `2` and `4` for more info)
 - Clone repo with the following command in a directory of your choice:
+
 ```
 git clone https://github.com/HrProject56/TINPRJ0456_scanner.git Colorsensor
-- ```
+```
+
 - Open the cloned repo with CLion
 - Check if PlatformIO is installed
 - If PlatformIO is succesfully go to `Tools > PlatformIO` and click on `Re-Init`
