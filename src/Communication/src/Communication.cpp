@@ -3,6 +3,7 @@
 //
 
 #include <Arduino.h>
+#include <iostream>
 #include "Communication.h"
 #include "../../../lib/ESP32_BLE_Arduino-1.0.1/src/BLEDevice.h"
 #include "../../../lib/ESP32_BLE_Arduino-1.0.1/src/BLEUtils.h"
@@ -99,50 +100,51 @@ void Communication::setBT() {
  * This function needs to be run in loop()
  * @param list
  */
-void Communication::writeBT(int *list) {
-    // Store String versions of the ints in the passed array in new variables
-    String r = (String) list[0];
-    String g = (String) list[1];
-    String b = (String) list[2];
-    String c = (String) list[3];
-    String temp = (String) list[4];
-    String lux = (String) list[5];
+void Communication::writeBT(unsigned short *list) {
+    try {
+        for (int i = 1; i < 4; i++) {
+            list[i] = map(list[i], 0, 1023, 0, 255);
+        }
 
-    // Prepare and send a value
-    uint8_t val[3] = {255, 0, 0};
-    pCharacteristic->setValue((uint8_t *) &val, 3);
-    pCharacteristic->notify();
+        uint8_t val[3] = {(uint8_t) list[1], (uint8_t) list[2], (uint8_t) list[3]};
+        pCharacteristic->setValue((uint8_t *) &val, 3);
+        pCharacteristic->notify();
 
-    // Prepare and send a value
-    uint8_t val1[5] = {'R', 'U', 'B', 'E', 'N'};
-    pCharacteristic->setValue((uint8_t *) &val1, 5);
-    pCharacteristic->notify();
+        // While disconnected
+        if (!deviceConnected) {
+            Serial.println("No device connected!");
+        }
 
-    // While disconnected
-    if (!deviceConnected) {
-        Serial.println("No device connected!");
-    }
+        // While connected
+        if (deviceConnected) {
+            Serial.println("Device connected!");
 
-    // While connected
-    if (deviceConnected) {
-        Serial.println("Device connected!");
+            // Bug: (prepared) messages won't send from inside an if statement(?)
+            // Prepare and send a value
 
-        // Bug: (prepared) messages won't send from inside an if statement(?)
 
-        delay(3); // bluetooth stack will go into congestion, if too many packets are sent, in 6 hours test i was able to go as low as 3ms
-    }
+            // Prepare and send a value
+//            uint8_t val1[5] = {'R', 'U', 'B', 'E', 'N'};
+//            pCharacteristic->setValue((uint8_t *) &val1, 5);
+//            pCharacteristic->notify();
 
-    // Disconnecting
-    if (!deviceConnected && oldDeviceConnected) {
-        delay(500); // give the bluetooth stack the chance to get things ready
-        pServer->startAdvertising(); // restart advertising
-        Serial.println("Restarting advertising..");
-        oldDeviceConnected = deviceConnected; // Set oldDeviceConnected to false
-    }
+            delay(3); // bluetooth stack will go into congestion, if too many packets are sent, in a 6 hours test I was able to go as low as 3ms
+        }
 
-    // Connecting
-    if (deviceConnected && !oldDeviceConnected) {
-        Serial.println("Connecting to a new device..");
-        oldDeviceConnected = deviceConnected; // If we connect to a device, set oldDeviceConnected to true
+        // Disconnecting
+        if (!deviceConnected && oldDeviceConnected) {
+            delay(500); // give the bluetooth stack the chance to get things ready
+            pServer->startAdvertising(); // restart advertising
+            Serial.println("Restarting advertising..");
+            oldDeviceConnected = deviceConnected; // Set oldDeviceConnected to false
+        }
+
+        // Connecting
+        if (deviceConnected && !oldDeviceConnected) {
+            Serial.println("Connecting to a new device..");
+            oldDeviceConnected = deviceConnected; // If we connect to a device, set oldDeviceConnected to true
+        }
+    } catch (std::exception &e) {
+        std::cout << " a standard exception was caught, with message '" << e.what() << "'\n";
     }
 }

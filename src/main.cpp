@@ -10,6 +10,7 @@
 Communication com;
 ColorSensor cs;
 
+
 /**
  * Start and configure our:
  * - Serial connection
@@ -26,7 +27,7 @@ void setup() {
  * Refresh data
  */
 void loop() {
-    int * color = cs.getColor();
+    auto color = cs.getColor();
     com.writeBT(color);
     delay(1000);
 }

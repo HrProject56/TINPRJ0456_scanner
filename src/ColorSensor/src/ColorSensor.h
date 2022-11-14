@@ -9,9 +9,10 @@
 using std::initializer_list;
 
 class ColorSensor {
-    public:
-        void setColorSensor();
-        static int * getColor();
+public:
+    static void setColorSensor();
+    uint16_t * getColor();
+    void printColor(int r, int g, int b, int c, int temp, int lux, int a_size);
 };
 
 

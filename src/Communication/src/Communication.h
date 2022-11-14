@@ -5,13 +5,11 @@
 #ifndef COLORSENSOR_COMMUNICATION_H
 #define COLORSENSOR_COMMUNICATION_H
 
-#include "initializer_list"
-using std::initializer_list;
 
 class Communication {
-    public:
-        void setBT();
-        void writeBT(int * list);
+public:
+    static void setBT();
+    static void writeBT(unsigned short *list);
 };
 
 
