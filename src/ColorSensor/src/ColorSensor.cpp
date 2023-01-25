@@ -24,7 +24,9 @@ uint16_t prop[a_size];
  * VIN -> VCC of een 3v3 pin
  */
 void ColorSensor::setColorSensor() {
-    tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_16X); // TCS34725_GAIN_4X or TCS34725_GAIN_1X`
+    tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_1X); // TCS34725_GAIN_4X or TCS34725_GAIN_1X`
+//    tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_614MS, TCS34725_GAIN_1X);
+
     if (tcs.begin()) {
         Serial.println("Found sensor");
     } else {
@@ -39,7 +41,7 @@ void ColorSensor::setColorSensor() {
 uint16_t * ColorSensor::getColor() {
     try {
         // Properties
-        int a_size_pos = 0, r = 1, g = 2, b = 3, c = 4, colorTemp = 5, lux = 6; // Position from array
+        int a_size_pos = 0, r = 1, g = 2, b = 3, c = 4, colorTemp = 5, lux = 6; // Position in array
 
         // Store our color through an unsigned variable
         memset(prop, 0, a_size*sizeof(int));
@@ -60,6 +62,16 @@ uint16_t * ColorSensor::getColor() {
     return prop;
 }
 
+/**
+ * Print current colors
+ * @param r
+ * @param g
+ * @param b
+ * @param c
+ * @param temp
+ * @param lux
+ * @param a_size
+ */
 void ColorSensor::printColor(int r, int g, int b, int c, int temp, int lux, int a_size) {
     Serial.print("R: ");
     Serial.print(r, DEC);

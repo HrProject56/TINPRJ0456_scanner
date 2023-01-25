@@ -10,7 +10,7 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_C_COMPILER_WORKS 1)
 set(CMAKE_CXX_COMPILER_WORKS 1)
 
-project("TINPRJ0456_scanner-e5856b4dec0b805cc5093e8fcaa491c6058cc84e" C CXX)
+project("TINPRJ0456_scanner" C CXX)
 
 include(CMakeListsPrivate.txt)
 

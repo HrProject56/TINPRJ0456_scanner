@@ -25,7 +25,7 @@
 #include <BLE2902.h>
 
 BLEServer *pServer = NULL;
-BLECharacteristic * pTxCharacteristic;
+BLECharacteristic *pTxCharacteristic;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
 uint8_t txValue = 0;
@@ -38,67 +38,67 @@ uint8_t txValue = 0;
 #define CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
 
 
-class MyServerCallbacks: public BLEServerCallbacks {
-    void onConnect(BLEServer* pServer) {
-      deviceConnected = true;
+class MyServerCallbacks : public BLEServerCallbacks {
+    void onConnect(BLEServer *pServer) {
+        deviceConnected = true;
     };
 
-    void onDisconnect(BLEServer* pServer) {
-      deviceConnected = false;
+    void onDisconnect(BLEServer *pServer) {
+        deviceConnected = false;
     }
 };
 
-class MyCallbacks: public BLECharacteristicCallbacks {
+class MyCallbacks : public BLECharacteristicCallbacks {
     void onWrite(BLECharacteristic *pCharacteristic) {
-      std::string rxValue = pCharacteristic->getValue();
+        std::string rxValue = pCharacteristic->getValue();
 
-      if (rxValue.length() > 0) {
-        Serial.println("*********");
-        Serial.print("Received Value: ");
-        for (int i = 0; i < rxValue.length(); i++)
-          Serial.print(rxValue[i]);
+        if (rxValue.length() > 0) {
+            Serial.println("*********");
+            Serial.print("Received Value: ");
+            for (int i = 0; i < rxValue.length(); i++)
+                Serial.print(rxValue[i]);
 
-        Serial.println();
-        Serial.println("*********");
-      }
+            Serial.println();
+            Serial.println("*********");
+        }
     }
 };
 
 
 void setup() {
-  Serial.begin(115200);
+    Serial.begin(115200);
 
-  // Create the BLE Device
-  BLEDevice::init("UART Service");
+    // Create the BLE Device
+    BLEDevice::init("UART Service");
 
-  // Create the BLE Server
-  pServer = BLEDevice::createServer();
-  pServer->setCallbacks(new MyServerCallbacks());
+    // Create the BLE Server
+    pServer = BLEDevice::createServer();
+    pServer->setCallbacks(new MyServerCallbacks());
 
-  // Create the BLE Service
-  BLEService *pService = pServer->createService(SERVICE_UUID);
+    // Create the BLE Service
+    BLEService *pService = pServer->createService(SERVICE_UUID);
 
-  // Create a BLE Characteristic
-  pTxCharacteristic = pService->createCharacteristic(
-										CHARACTERISTIC_UUID_TX,
-										BLECharacteristic::PROPERTY_NOTIFY
-									);
-                      
-  pTxCharacteristic->addDescriptor(new BLE2902());
+    // Create a BLE Characteristic
+    pTxCharacteristic = pService->createCharacteristic(
+            CHARACTERISTIC_UUID_TX,
+            BLECharacteristic::PROPERTY_NOTIFY
+    );
 
-  BLECharacteristic * pRxCharacteristic = pService->createCharacteristic(
-											 CHARACTERISTIC_UUID_RX,
-											BLECharacteristic::PROPERTY_WRITE
-										);
+    pTxCharacteristic->addDescriptor(new BLE2902());
 
-  pRxCharacteristic->setCallbacks(new MyCallbacks());
+    BLECharacteristic *pRxCharacteristic = pService->createCharacteristic(
+            CHARACTERISTIC_UUID_RX,
+            BLECharacteristic::PROPERTY_WRITE
+    );
 
-  // Start the service
-  pService->start();
+    pRxCharacteristic->setCallbacks(new MyCallbacks());
 
-  // Start advertising
-  pServer->getAdvertising()->start();
-  Serial.println("Waiting a client connection to notify...");
+    // Start the service
+    pService->start();
+
+    // Start advertising
+    pServer->getAdvertising()->start();
+    Serial.println("Waiting a client connection to notify...");
 }
 
 void loop() {
@@ -107,8 +107,8 @@ void loop() {
         pTxCharacteristic->setValue(&txValue, 1);
         pTxCharacteristic->notify();
         txValue++;
-		delay(10); // bluetooth stack will go into congestion, if too many packets are sent
-	}
+        delay(10); // bluetooth stack will go into congestion, if too many packets are sent
+    }
 
     // disconnecting
     if (!deviceConnected && oldDeviceConnected) {
@@ -119,7 +119,7 @@ void loop() {
     }
     // connecting
     if (deviceConnected && !oldDeviceConnected) {
-		// do stuff here on connecting
+        // do stuff here on connecting
         oldDeviceConnected = deviceConnected;
     }
 }
