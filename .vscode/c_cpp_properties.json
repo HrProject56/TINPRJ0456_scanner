@@ -493,7 +493,7 @@
                 "ARDUINO=10812",
                 "ARDUINO_VARIANT=\"firebeetle32\"",
                 "ARDUINO_BOARD=\"FireBeetle-ESP32\"",
-                "ARDUINO_PARTITION_default",
+                "ARDUINO_PARTITION_partition",
                 ""
             ],
             "cStandard": "c99",
