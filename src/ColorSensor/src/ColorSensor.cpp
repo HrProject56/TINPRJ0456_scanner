@@ -3,9 +3,7 @@
 //
 #include <iostream>
 #include "ColorSensor.h"
-#include "../../../lib/Adafruit_BusIO/Adafruit_I2CDevice.h"
-#include "../../../lib/Adafruit_BusIO/Adafruit_SPIDevice.h"
-#include "../../../lib/Adafruit_TCS34725/Adafruit_TCS34725.h"
+#include "Adafruit_TCS34725.h"
 
 extern HardwareSerial Serial;
 
@@ -44,7 +42,7 @@ uint16_t * ColorSensor::getColor() {
         int a_size_pos = 0, r = 1, g = 2, b = 3, c = 4, colorTemp = 5, lux = 6; // Position in array
 
         // Store our color through an unsigned variable
-        memset(prop, 0, a_size*sizeof(int));
+        memset(prop, 0, sizeof(int));
         prop[a_size] = {}; // 0: a_size, 1:r, 2:g, 3:b, 4:c, 5:temp, 6:lux
         prop[0] = a_size;
 

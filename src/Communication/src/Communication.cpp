@@ -5,19 +5,19 @@
 #include <Arduino.h>
 #include <iostream>
 #include "Communication.h"
-#include "../../../lib/ESP32_BLE_Arduino-1.0.1/src/BLEDevice.h"
-#include "../../../lib/ESP32_BLE_Arduino-1.0.1/src/BLEUtils.h"
-#include "../../../lib/ESP32_BLE_Arduino-1.0.1/src/BLEServer.h"
-#include "../../../lib/ESP32_BLE_Arduino-1.0.1/src/BLE2902.h"
+#include <BLEDevice.h>
+#include <BLEUtils.h>
+#include <BLEServer.h>
+#include <BLE2902.h>
 //#include "../../../lib/BluetoothSerial/src/BluetoothSerial.h"
 
 // Make sure Hardware Serial can be used in the file
 extern HardwareSerial Serial;
 
 // Define our *static* UUIDs to start our Bluetooth instance
-#define SERVICE_UUID        "d6960225-2fbc-4565-bf52-0f1cc61bbfcf"
-#define CHARACTERISTIC_UUID "13d258f5-80c4-4863-a995-53604358e2e5"
-#define CHARACTERISTIC_UUID_RX "2df0194c-8eca-4633-9cf1-dbae41267a5b"
+#define SERVICE_UUID                "d6960225-2fbc-4565-bf52-0f1cc61bbfcf"
+#define CHARACTERISTIC_UUID         "13d258f5-80c4-4863-a995-53604358e2e5"
+#define CHARACTERISTIC_UUID_RX      "2df0194c-8eca-4633-9cf1-dbae41267a5b"
 
 // Declare our Bluetooth server and Characteristics
 BLEServer *pServer = NULL;
