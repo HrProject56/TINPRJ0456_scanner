@@ -1,2 +1,3 @@
 # Name,   Type, SubType, Offset,   Size, Flags
-# Note: if you have increased the bootloader size, make sure to update the offsets to avoid overlap
+# Note: if you have increased the bootloader  size, make sure to update the offsets to avoid overlap
+# Name,   Type, SubType, Offset,  Size, Flags
