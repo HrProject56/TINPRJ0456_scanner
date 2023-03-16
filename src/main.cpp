@@ -17,8 +17,8 @@ ColorSensor cs;
  */
 void setup() {
     Serial.begin(115200);
-    com.setBT();
-    cs.setColorSensor();
+    // com.setBT();
+    // cs.setColorSensor();
     Serial.println(WiFi.macAddress());
 }
 
