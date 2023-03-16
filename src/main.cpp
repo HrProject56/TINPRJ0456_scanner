@@ -26,7 +26,8 @@ void setup() {
  * Refresh data
  */
 void loop() {
-    unsigned short * color = cs.getColor();
-    com.writeBT(color);
+//    unsigned short * color = cs.getColor();
+//    com.writeBT(color);
+    Serial.println("Hi");
     delay(1000);
 }
