@@ -1,6 +1,7 @@
 //
 // Created by rwfli on 08/11/2022.
 //
+#pragma once
 
 #ifndef COLORSENSOR_COLORSENSOR_H
 #define COLORSENSOR_COLORSENSOR_H
