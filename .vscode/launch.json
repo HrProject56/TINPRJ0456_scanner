@@ -12,11 +12,11 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug",
-            "executable": "E:/Hr - Technisch Informatica/TINPRJ0456/Code/TINPRJ0456_scanner/.pio/build/pico/firmware.elf",
+            "executable": "/home/niko/Documenten/Projecten/pico/TINPRJ0456_scanner/.pio/build/pico/firmware.elf",
             "projectEnvName": "pico",
-            "toolchainBinDir": "C:/Users/Nicki/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+            "toolchainBinDir": "/home/niko/.platformio/packages/toolchain-gccarmnoneeabi/bin",
             "internalConsoleOptions": "openOnSessionStart",
-            "svdPath": "C:/Users/Nicki/.platformio/platforms/raspberrypi/misc/svd/rp2040.svd",
+            "svdPath": "/home/niko/.platformio/platforms/raspberrypi/misc/svd/rp2040.svd",
             "preLaunchTask": {
                 "type": "PlatformIO",
                 "task": "Pre-Debug"
@@ -26,21 +26,21 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (skip Pre-Debug)",
-            "executable": "E:/Hr - Technisch Informatica/TINPRJ0456/Code/TINPRJ0456_scanner/.pio/build/pico/firmware.elf",
+            "executable": "/home/niko/Documenten/Projecten/pico/TINPRJ0456_scanner/.pio/build/pico/firmware.elf",
             "projectEnvName": "pico",
-            "toolchainBinDir": "C:/Users/Nicki/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+            "toolchainBinDir": "/home/niko/.platformio/packages/toolchain-gccarmnoneeabi/bin",
             "internalConsoleOptions": "openOnSessionStart",
-            "svdPath": "C:/Users/Nicki/.platformio/platforms/raspberrypi/misc/svd/rp2040.svd"
+            "svdPath": "/home/niko/.platformio/platforms/raspberrypi/misc/svd/rp2040.svd"
         },
         {
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (without uploading)",
-            "executable": "E:/Hr - Technisch Informatica/TINPRJ0456/Code/TINPRJ0456_scanner/.pio/build/pico/firmware.elf",
+            "executable": "/home/niko/Documenten/Projecten/pico/TINPRJ0456_scanner/.pio/build/pico/firmware.elf",
             "projectEnvName": "pico",
-            "toolchainBinDir": "C:/Users/Nicki/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+            "toolchainBinDir": "/home/niko/.platformio/packages/toolchain-gccarmnoneeabi/bin",
             "internalConsoleOptions": "openOnSessionStart",
-            "svdPath": "C:/Users/Nicki/.platformio/platforms/raspberrypi/misc/svd/rp2040.svd",
+            "svdPath": "/home/niko/.platformio/platforms/raspberrypi/misc/svd/rp2040.svd",
             "loadMode": "manual"
         }
     ]
