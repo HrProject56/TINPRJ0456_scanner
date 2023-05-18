@@ -2,9 +2,9 @@
 // // Created by rwfli on 08/11/2022.
 // //
 
-// #include <Arduino.h>
-// #include <iostream>
-// #include "Communication.hpp"
+#include <Arduino.h>
+#include <iostream>
+#include "Communication.hpp"
 // #include <BLEDevice.h>
 // #include <BLEUtils.h>
 // #include <BLEServer.h>
