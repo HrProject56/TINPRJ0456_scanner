@@ -7,9 +7,13 @@
 
 
 class Communication {
+private:
+    TwoWire *_wire;
+
 public:
-    static void setBT();
-    static void writeBT(unsigned short *list);
+    void commInit();
+    void commWrite(unsigned short &list);
+    unsigned short &commRead();
 };
 
 
