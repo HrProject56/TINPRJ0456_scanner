@@ -41,7 +41,7 @@ void Communication::commWrite(unsigned short &list)
 }
 
 
-void Communication::commRead()
+uint16_t &Communication::commRead()
 {
     String message = "yomama";
 

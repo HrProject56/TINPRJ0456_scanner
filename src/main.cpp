@@ -14,6 +14,10 @@ OledDisplay od;
 Communication com;
 
 
+bool scanFlag = false;
+uint16_t *colorArray = nullptr;
+
+
 /**
  * Start and configure our:
  * - Serial connection
@@ -24,7 +28,6 @@ void setup() {
 
     // Init display
     od.initDisplay();
-    od.writeStringToDisplay("yo mama");
 
     com.commInit();
     cs.setColorSensor();
@@ -35,9 +38,14 @@ void setup() {
  * Refresh data
  */
 void loop() {
-    unsigned short * color = cs.getColor();
+    if (scanFlag) {
+        colorArray = cs.getColor();
+        od.writeStringToDisplay("SCAN");
+    } else {
+        od.writeStringToDisplay("READY");
+    }
 //    com.writeBT(color);
     com.commRead();
-    Serial.println("Hi");
+    Serial.println("Hi");;
     delay(1000);
 }

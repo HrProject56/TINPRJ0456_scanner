@@ -11,7 +11,8 @@
 #define DISPLAY_WIDTH       128
 #define DISPLAY_HEIGHT      64
 #define DISPLAY_RST         -1
-#define DISPLAY_TEXT_SIZE   1
+#define DISPLAY_TEXT_SIZE   3
+#define CHAR_SIZE           18
 
 
 OledDisplay::OledDisplay()
@@ -48,7 +49,6 @@ void OledDisplay::initDisplay()
 
     this->_display.setTextSize(DISPLAY_TEXT_SIZE);
     this->_display.setTextColor(WHITE);
-    this->_display.setCursor(0, 10);
 }
 
 
@@ -57,8 +57,12 @@ void OledDisplay::initDisplay()
 */
 void OledDisplay::writeStringToDisplay(String const &text)
 {
+    uint16_t pos0 = (DISPLAY_WIDTH-(text.length()*CHAR_SIZE))/2;
+    // this->_display.clearDisplay();
+    this->_display.setCursor(pos0, 23);
     this->_display.println(text);
     this->_display.display();
+
 }
 
 

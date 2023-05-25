@@ -6,15 +6,21 @@
 #define COLORSENSOR_COMMUNICATION_H
 
 
-class Communication {
-private:
-    TwoWire *_wire;
+#include <Wire.h>
 
-public:
-    void commInit();
-    void commWrite(unsigned short &list);
-    unsigned short &commRead();
+
+class Communication 
+{
+    private:
+        TwoWire *_wire;
+
+    public:
+        void commInit();
+        void commWrite(uint16_t &list);
+        uint16_t &commRead();
+
+        TwoWire *getI2CWire();
 };
 
 
-#endif //COLORSENSOR_COMMUNICATION_H
+#endif //COLORSENSOR_COMMUNICATION_Hl

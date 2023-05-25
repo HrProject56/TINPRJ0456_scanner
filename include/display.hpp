@@ -21,6 +21,8 @@ class OledDisplay
         void initDisplay();
         void writeStringToDisplay(String const &text);
         void writeIcontoDisplay();
+
+        TwoWire *getI2CWire();
 };
 
 

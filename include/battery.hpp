@@ -8,7 +8,7 @@
 #define __COLORSENSOR__BATTERY__H__
 
 
-Class Battery
+class Battery
 {
     private:
         double _voltage;
@@ -19,7 +19,7 @@ Class Battery
         Battery();
         void readVoltage();
         void readCurrent();
-        void createWarning();
+        void createWarning(String &message);
 
         void setVoltage(double voltage);
         void setCurrent(double current);
